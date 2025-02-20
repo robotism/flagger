@@ -1,0 +1,11 @@
+debug: true
+
+server:
+  port: 7777
+
+database:
+  default:
+    host: xxx.xxx.xxx.xxx
+    port: 4000
+    user: root
+    pass: 12345678
