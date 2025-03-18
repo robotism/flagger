@@ -16,6 +16,9 @@ go get github.com/robotism/flagger
 
 - Parameter Struct
 
+> note: `mapstructure:"aaa"` is valid </br>
+> note: `mapstructure:"aaBcd"` is invalid </br>
+    
     ```go
     type AppConfig struct {
         Debug    bool   `mapstructure:"debug" short:"d" description:"debug mode" default:"false"`
