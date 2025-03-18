@@ -16,6 +16,9 @@ go get github.com/robotism/flagger
 
 - 参数结构体
 
+> 注意: `mapstructure:"aaa"` 是正确的 </br>
+> 注意: `mapstructure:"aaBcd"` 是不被识别的 </br>
+
     ```go
     type AppConfig struct {
         Debug    bool   `mapstructure:"debug" short:"d" description:"debug mode" default:"false"`
