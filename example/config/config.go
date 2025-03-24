@@ -18,4 +18,9 @@ type AppConfig struct {
 	Server Server `mapstructure:"server" group:"server"`
 
 	Database map[string]Database `mapstructure:"database" group:"database" mapkey:"<dbkey>"`
+
+	ParamAb string `mapstructure:"paramAb" description:"" default:""`
+	ParamAC string `mapstructure:"paramAC" description:"" default:""`
+	ParamAD string `mapstructure:"param_ad" short:"z" description:"" default:""`
+	ParamAE string `mapstructure:"param-ae" description:"" default:""`
 }
