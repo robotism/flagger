@@ -252,7 +252,12 @@ func parseFlagsMap(c interface{}, mapkey string) (map[string]sFlag, error) {
 func parseFlags(m *map[string]sFlag, c interface{}, parent string, field *reflect.StructField, fieldValue *reflect.Value, mapkey string) error {
 	var name string
 	if field != nil {
-		name = strings.ToLower(field.Name)
+		mapstructure := field.Tag.Get("mapstructure")
+		if mapstructure != "" {
+			name = mapstructure
+		} else {
+			name = strings.ToLower(field.Name)
+		}
 	}
 	var key string
 	if parent != "" && name != "" {
