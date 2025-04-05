@@ -23,4 +23,14 @@ type AppConfig struct {
 	ParamAC string `mapstructure:"paramAC" description:"" default:""`
 	ParamAD string `mapstructure:"param_ad" short:"z" description:"" default:""`
 	ParamAE string `mapstructure:"param-ae" description:"" default:""`
+
+	paramInternal string
+}
+
+func (ac *AppConfig) GetParamInternal() string {
+	return ac.paramInternal
+}
+
+func (ac *AppConfig) SetParamInternal(paramInternal string) {
+	ac.paramInternal = paramInternal
 }

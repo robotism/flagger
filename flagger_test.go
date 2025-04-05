@@ -2,6 +2,7 @@ package flagger
 
 import (
 	"log"
+	"os"
 	"strings"
 	"testing"
 
@@ -15,6 +16,8 @@ func TestBinder(test *testing.T) {
 
 	c := &config.AppConfig{}
 
+	os.Setenv("SERVER_PORT", "9090")
+
 	err := f.Parse(c, []string{"-d=true", "--timezone=Asia/Shanghai", "--database.default.host=127.0.0.1"}...)
 	if err != nil {
 		panic(err)
@@ -26,13 +29,13 @@ func TestBinder(test *testing.T) {
 	assert.Equal(test, "Asia/Shanghai", c.Timezone)
 	assert.Equal(test, 1, len(c.Database))
 	assert.Equal(test, "127.0.0.1", c.Database["default"].Host)
-	assert.Equal(test, 8080, c.Server.Port)
+	assert.Equal(test, 9090, c.Server.Port)
 	assert.Equal(test, 3306, c.Database["default"].Port)
 	assert.Equal(test, "root", c.Database["default"].User)
 	assert.Equal(test, "", c.Database["default"].Pass)
 }
 
-func TestConbra(test *testing.T) {
+func TestCobra(test *testing.T) {
 
 	cmd := &cobra.Command{
 		Use:   "test",

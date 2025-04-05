@@ -313,7 +313,10 @@ func parseFlags(m *map[string]sFlag, c interface{}, parent string, field *reflec
 		for i := 0; i < t.NumField(); i++ {
 			f := t.Field(i)
 			fv := v.Field(i)
-			if !f.IsExported() || !fv.IsValid() {
+			if !f.IsExported() {
+				continue
+			}
+			if !fv.IsValid() {
 				return fmt.Errorf("cannot parse unexported field : %+v", f)
 			}
 			err := parseFlags(m, fv.Interface(), key, &f, &fv, mapkey)
